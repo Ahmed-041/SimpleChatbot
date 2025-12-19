@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .chatbot {
+            background: #fff;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: #4a6cf7;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .user {
+            background: #e1e7ff;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background: #f1f1f1;
+            align-self: flex-start;
+        }
+
+        .input-area {
+            display: flex;
+            border-top: 1px solid #ccc;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #4a6cf7;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3b5bdb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chatbot">
+    <div class="header">Simple Chatbot</div>
+
+    <div class="chat-area" id="chatArea">
+        <div class="message bot">Hello! How can I help you?</div>
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    const responses = {
+        "hi": "Hello!",
+        "hello": "Hi there!",
+        "how are you": "I'm just a bot, but I'm doing great 😊",
+        "what is your name": "I am a simple chatbot.",
+        "bye": "Goodbye! Have a nice day!",
+        "help": "You can ask me basic questions like hi, hello, or how are you."
+    };
+
+    function sendMessage() {
+        const input = document.getElementById("userInput");
+        const message = input.value.trim().toLowerCase();
+
+        if (message === "") return;
+
+        addMessage(message, "user");
+
+        let reply = responses[message] || 
+                    "Sorry, I don't understand that. Try something else.";
+
+        setTimeout(() => {
+            addMessage(reply, "bot");
+        }, 500);
+
+        input.value = "";
+    }
+
+    function addMessage(text, sender) {
+        const chatArea = document.getElementById("chatArea");
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message", sender);
+        msgDiv.textContent = text;
+        chatArea.appendChild(msgDiv);
+        chatArea.scrollTop = chatArea.scrollHeight;
+    }
+
+    // Send message on Enter key
+    document.getElementById("userInput").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") sendMessage();
+    });
+</script>
+
+</body>
+</html>
