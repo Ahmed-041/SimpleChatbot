@@ -97,12 +97,45 @@
 
 <script>
     const responses = {
+        // Greetings
         "hi": "Hello!",
         "hello": "Hi there!",
         "how are you": "I'm just a bot, but I'm doing great 😊",
-        "what is your name": "I am a simple chatbot.",
-        "bye": "Goodbye! Have a nice day!",
-        "help": "You can ask me basic questions like hi, hello, or how are you."
+        "bye": "Goodbye! Best of luck with your engineering journey 👋",
+        "help": "You can ask me CSE or engineering-related questions.",
+
+        // Engineering / B.Tech
+        "what is btech": "B.Tech (Bachelor of Technology) is a 4-year undergraduate engineering degree.",
+        "what is engineering": "Engineering is the application of science and mathematics to solve real-world problems.",
+        "what is cse": "CSE stands for Computer Science and Engineering. It deals with software, hardware, and computing technologies.",
+        "why choose cse": "CSE offers careers in software development, AI, data science, cybersecurity, and more.",
+
+        // Programming
+        "what is programming": "Programming is the process of writing instructions for computers to perform tasks.",
+        "what is coding": "Coding is writing code using programming languages like C, Java, Python, or JavaScript.",
+        "best programming language": "Python is beginner-friendly, while Java and C++ are widely used in engineering.",
+
+        // Core CSE Subjects
+        "what is data structure": "Data Structures organize data efficiently for better performance and memory usage.",
+        "what is algorithm": "An algorithm is a step-by-step procedure to solve a problem.",
+        "what is dbms": "DBMS (Database Management System) is used to store, retrieve, and manage data.",
+        "what is operating system": "An Operating System manages hardware and software resources of a computer.",
+        "what is computer networks": "Computer Networks allow computers to communicate and share resources.",
+
+        // Web Technologies
+        "what is html": "HTML is used to structure web pages.",
+        "what is css": "CSS is used to style and design web pages.",
+        "what is javascript": "JavaScript adds interactivity and logic to web pages.",
+
+        // Advanced Topics
+        "what is ai": "AI (Artificial Intelligence) enables machines to think and act like humans.",
+        "what is machine learning": "Machine Learning allows systems to learn from data without explicit programming.",
+        "what is data science": "Data Science involves analyzing data to extract useful insights.",
+
+        // Projects & Career
+        "what is a project": "A project applies theoretical knowledge to solve real-world problems.",
+        "final year project": "Final year projects demonstrate your technical and problem-solving skills.",
+        "career options after cse": "Software Engineer, Data Analyst, AI Engineer, Web Developer, Cybersecurity Expert."
     };
 
     function sendMessage() {
@@ -114,11 +147,11 @@
         addMessage(message, "user");
 
         let reply = responses[message] || 
-                    "Sorry, I don't understand that. Try something else.";
+                    "Sorry, I don't have an answer for that yet. Try asking a CSE or engineering question.";
 
         setTimeout(() => {
             addMessage(reply, "bot");
-        }, 500);
+        }, 400);
 
         input.value = "";
     }
@@ -132,11 +165,9 @@
         chatArea.scrollTop = chatArea.scrollHeight;
     }
 
-    // Send message on Enter key
     document.getElementById("userInput").addEventListener("keypress", function(e) {
         if (e.key === "Enter") sendMessage();
     });
-</script>
-
+</script
 </body>
 </html>
